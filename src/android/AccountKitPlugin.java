@@ -24,6 +24,8 @@ import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.facebook.accountkit.ui.SkinManager;
+import com.facebook.accountkit.ui.UIManager;
 
 
 public class AccountKitPlugin extends CordovaPlugin {
@@ -120,6 +122,15 @@ public class AccountKitPlugin extends CordovaPlugin {
 
     configurationBuilder.setDefaultCountryCode(options.optString("defaultCountryCode", null));
     configurationBuilder.setFacebookNotificationsEnabled(options.optBoolean("facebookNotificationsEnabled", false));
+
+    UIManager uiManager = new SkinManager(
+            SkinManager.Skin.CONTEMPORARY,
+            0xFF6801FE,
+            -1,
+            SkinManager.Tint.BLACK,
+            0.85);
+
+    configurationBuilder.setUIManager(uiManager);
 
     if (type == LoginType.PHONE) {
       JSONArray phoneNumber = options.optJSONArray("initialPhoneNumber");
