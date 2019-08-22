@@ -48,6 +48,15 @@
                                                                                           state:inputState];
     vc.enableSendToFacebook = facebookNotificationsEnabled;
     vc.defaultCountryCode = defaultCountryCode;
+
+    UIColor* mmPurple = [UIColor colorWithRed:0.53 green:0.00 blue:0.98 alpha:1.0];
+    vc.uiManager = [[AKFSkinManager alloc]
+                      initWithSkinType: AKFSkinTypeClassic
+                      primaryColor: mmPurple
+                      backgroundImage:nil
+                      backgroundTint: AKFBackgroundTintWhite
+                      tintIntensity: 0];
+
     [self _prepareLoginViewController:vc];
     UIViewController *rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     [rootViewController presentViewController:vc animated:YES completion:nil];
